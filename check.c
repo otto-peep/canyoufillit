@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/08 17:45:31 by pconin            #+#    #+#             */
-/*   Updated: 2015/12/10 19:17:28 by pconin           ###   ########.fr       */
+/*   Created: 2015/12/10 18:54:46 by pconin            #+#    #+#             */
+/*   Updated: 2015/12/10 19:17:38 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/headerfillit.h"
-#define BUF_SIZE 4096
 
-int		ft_check(char *buf)
+int		check_char(char *buf);
 {
-	ft_checkmap(buf)
-}
+	while (*buf)
+	{
+		if (buf != '\n' && buf != '#' && buf != '.')
+			return (1);
+		*buf++;
+	}
+	return (0);
 
-int		main(int argc, char **argv)
+int		check_map(char *buf);
 {
-	char buf[BUF_SIZE + 1];
-	int	fd;
 	int ret;
 
-	if (argc != 1)
-		return (ft_error);
-	fd = open(argv[1], O_RDONLY);
-	ret = read(fd, buf , BUF_SIZE);
-	if (ret = NULL)
-		return (ft_error);
-	buf[ret] = '\0';
-//	error = ft_check;
-	printf("%s\n", buf);
-	return (0);
-}
+	ret = 1;
+	ret = ret - check_char(buf);
+	ret = ret - check_
