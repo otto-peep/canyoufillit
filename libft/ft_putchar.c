@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/08 17:45:31 by pconin            #+#    #+#             */
-/*   Updated: 2015/12/10 18:21:45 by pconin           ###   ########.fr       */
+/*   Created: 2015/11/23 11:17:53 by pconin            #+#    #+#             */
+/*   Updated: 2015/12/05 21:28:30 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/headerfillit.h"
-#define BUF_SIZE 4096
+#include <unistd.h>
 
-
-int		main(int argc, char **argv)
+void	ft_putchar(char c)
 {
-	char buf[BUF_SIZE + 1];
-	int	fd;
-	int ret;
-
-	if (argc != 1)
-		return (ft_error);
-	fd = open(argv[1], O_RDONLY);
-	ret = read(fd, buf , BUF_SIZE);
-	buf[ret] = '\0';
-//	error = ft_check;
-	printf("%s\n", buf);
-	return (0);
+	write(1, &c, 1);
 }

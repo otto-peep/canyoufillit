@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/08 17:45:31 by pconin            #+#    #+#             */
-/*   Updated: 2015/12/10 18:21:45 by pconin           ###   ########.fr       */
+/*   Created: 2015/11/29 17:05:04 by pconin            #+#    #+#             */
+/*   Updated: 2015/11/30 16:54:28 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/headerfillit.h"
-#define BUF_SIZE 4096
-
-
-int		main(int argc, char **argv)
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	char buf[BUF_SIZE + 1];
-	int	fd;
-	int ret;
+	unsigned int i;
 
-	if (argc != 1)
-		return (ft_error);
-	fd = open(argv[1], O_RDONLY);
-	ret = read(fd, buf , BUF_SIZE);
-	buf[ret] = '\0';
-//	error = ft_check;
-	printf("%s\n", buf);
-	return (0);
+	i = 0;
+	if (s && f)
+	{
+		while (s[i] != '\0')
+		{
+			f(i, &s[i]);
+			i++;
+		}
+	}
 }

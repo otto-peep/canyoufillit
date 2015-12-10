@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/08 17:45:31 by pconin            #+#    #+#             */
-/*   Updated: 2015/12/10 18:21:45 by pconin           ###   ########.fr       */
+/*   Created: 2015/11/24 18:38:23 by pconin            #+#    #+#             */
+/*   Updated: 2015/12/05 21:29:04 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/headerfillit.h"
-#define BUF_SIZE 4096
+#include "libft.h"
 
-
-int		main(int argc, char **argv)
+void	ft_putendl_fd(char const *s, int fd)
 {
-	char buf[BUF_SIZE + 1];
-	int	fd;
-	int ret;
-
-	if (argc != 1)
-		return (ft_error);
-	fd = open(argv[1], O_RDONLY);
-	ret = read(fd, buf , BUF_SIZE);
-	buf[ret] = '\0';
-//	error = ft_check;
-	printf("%s\n", buf);
-	return (0);
+	ft_putstr_fd(s, fd);
+	ft_putstr_fd("\n", fd);
 }

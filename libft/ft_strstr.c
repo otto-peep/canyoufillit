@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/08 17:45:31 by pconin            #+#    #+#             */
-/*   Updated: 2015/12/10 18:21:45 by pconin           ###   ########.fr       */
+/*   Created: 2015/11/26 17:46:29 by pconin            #+#    #+#             */
+/*   Updated: 2015/12/04 19:05:33 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/headerfillit.h"
-#define BUF_SIZE 4096
+#include <string.h>
+#include "libft.h"
 
-
-int		main(int argc, char **argv)
+char	*ft_strstr(const char *s1, const char *s2)
 {
-	char buf[BUF_SIZE + 1];
-	int	fd;
-	int ret;
+	int a;
+	int b;
+	int len;
 
-	if (argc != 1)
-		return (ft_error);
-	fd = open(argv[1], O_RDONLY);
-	ret = read(fd, buf , BUF_SIZE);
-	buf[ret] = '\0';
-//	error = ft_check;
-	printf("%s\n", buf);
-	return (0);
+	a = 0;
+	len = ft_strlen(s2);
+	if (len == 0)
+		return ((char *)s1);
+	while (s1[a] != '\0')
+	{
+		b = 0;
+		while (s2[b] == s1[b + a])
+		{
+			if (b == len - 1)
+				return ((char *)&s1[a]);
+			b++;
+		}
+		a++;
+	}
+	return (NULL);
 }

@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   headerfillit.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/08 17:45:31 by pconin            #+#    #+#             */
-/*   Updated: 2015/12/10 18:21:45 by pconin           ###   ########.fr       */
+/*   Created: 2015/12/08 18:23:09 by pconin            #+#    #+#             */
+/*   Updated: 2015/12/10 18:38:14 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/headerfillit.h"
-#define BUF_SIZE 4096
+#ifndef HEADERFILLIT_H
 
+# define HEADERFILLIT_H
+# include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
+#include <fcntl.h>
 
-int		main(int argc, char **argv)
+typedef struct s_list
 {
-	char buf[BUF_SIZE + 1];
-	int	fd;
-	int ret;
+	char			**tetri;
+	struct s_list	*next;
+}				t_tri;
 
-	if (argc != 1)
-		return (ft_error);
-	fd = open(argv[1], O_RDONLY);
-	ret = read(fd, buf , BUF_SIZE);
-	buf[ret] = '\0';
-//	error = ft_check;
-	printf("%s\n", buf);
-	return (0);
-}
+int		ft_error(void);
+L
+
+#endif

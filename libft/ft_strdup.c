@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/08 17:45:31 by pconin            #+#    #+#             */
-/*   Updated: 2015/12/10 18:21:45 by pconin           ###   ########.fr       */
+/*   Created: 2015/11/23 18:06:18 by pconin            #+#    #+#             */
+/*   Updated: 2015/12/04 19:00:08 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/headerfillit.h"
-#define BUF_SIZE 4096
+#include <string.h>
+#include "libft.h"
+#include <stdlib.h>
 
-
-int		main(int argc, char **argv)
+char		*ft_strdup(const char *s1)
 {
-	char buf[BUF_SIZE + 1];
-	int	fd;
-	int ret;
+	int		i;
+	char	*str;
 
-	if (argc != 1)
-		return (ft_error);
-	fd = open(argv[1], O_RDONLY);
-	ret = read(fd, buf , BUF_SIZE);
-	buf[ret] = '\0';
-//	error = ft_check;
-	printf("%s\n", buf);
-	return (0);
+	i = 0;
+	str = NULL;
+	if (!s1)
+		return (str);
+	str = (char *)malloc(sizeof(char) * (ft_strlen(s1)));
+	if (str == NULL)
+		return (NULL);
+	ft_strcpy(str, s1);
+	return (str);
 }

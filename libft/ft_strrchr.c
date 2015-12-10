@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/08 17:45:31 by pconin            #+#    #+#             */
-/*   Updated: 2015/12/10 18:21:45 by pconin           ###   ########.fr       */
+/*   Created: 2015/11/26 17:28:37 by pconin            #+#    #+#             */
+/*   Updated: 2015/12/04 19:05:13 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/headerfillit.h"
-#define BUF_SIZE 4096
+#include <string.h>
+#include "libft.h"
 
-
-int		main(int argc, char **argv)
+char	*ft_strrchr(const char *s, int c)
 {
-	char buf[BUF_SIZE + 1];
-	int	fd;
-	int ret;
+	int		a;
+	char	*b;
 
-	if (argc != 1)
-		return (ft_error);
-	fd = open(argv[1], O_RDONLY);
-	ret = read(fd, buf , BUF_SIZE);
-	buf[ret] = '\0';
-//	error = ft_check;
-	printf("%s\n", buf);
-	return (0);
+	b = (char *)s;
+	a = ft_strlen(s);
+	while (b[a] != c && a != 0)
+		a--;
+	if (b[a] == c)
+		return (&b[a]);
+	else
+		return (NULL);
 }

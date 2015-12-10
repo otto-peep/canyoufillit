@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/08 17:45:31 by pconin            #+#    #+#             */
-/*   Updated: 2015/12/10 18:21:45 by pconin           ###   ########.fr       */
+/*   Created: 2015/11/27 14:46:35 by pconin            #+#    #+#             */
+/*   Updated: 2015/12/07 14:40:29 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/headerfillit.h"
-#define BUF_SIZE 4096
+#include <string.h>
 
-
-int		main(int argc, char **argv)
+void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 {
-	char buf[BUF_SIZE + 1];
-	int	fd;
-	int ret;
+	size_t			i;
+	unsigned char	*str1;
+	unsigned char	*str2;
+	unsigned char	c1;
 
-	if (argc != 1)
-		return (ft_error);
-	fd = open(argv[1], O_RDONLY);
-	ret = read(fd, buf , BUF_SIZE);
-	buf[ret] = '\0';
-//	error = ft_check;
-	printf("%s\n", buf);
-	return (0);
+	i = 0;
+	str1 = (unsigned char *)dest;
+	str2 = (unsigned char *)src;
+	c1 = (unsigned char)c;
+	while (i < n)
+	{
+		str1[i] = str2[i];
+		if (str1[i] == c1)
+		{
+			i++;
+			return (&dest[i]);
+		}
+		i++;
+	}
+	return (NULL);
 }

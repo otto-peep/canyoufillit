@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/08 17:45:31 by pconin            #+#    #+#             */
-/*   Updated: 2015/12/10 18:21:45 by pconin           ###   ########.fr       */
+/*   Created: 2015/11/30 19:40:25 by pconin            #+#    #+#             */
+/*   Updated: 2015/12/07 14:36:27 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/headerfillit.h"
-#define BUF_SIZE 4096
+#include <string.h>
 
-
-int		main(int argc, char **argv)
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	char buf[BUF_SIZE + 1];
-	int	fd;
-	int ret;
+	unsigned char	*c1;
+	unsigned char	*c2;
+	size_t			count;
 
-	if (argc != 1)
-		return (ft_error);
-	fd = open(argv[1], O_RDONLY);
-	ret = read(fd, buf , BUF_SIZE);
-	buf[ret] = '\0';
-//	error = ft_check;
-	printf("%s\n", buf);
-	return (0);
+	count = 0;
+	c1 = (unsigned char *)s1;
+	c2 = (unsigned char *)s2;
+	if ((!s1 && !s2) || n == 0)
+		return (0);
+	while (count + 1 < n && (c1[count] == c2[count]))
+		count++;
+	return (c1[count] - c2[count]);
 }

@@ -1,31 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/08 17:45:31 by pconin            #+#    #+#             */
-/*   Updated: 2015/12/10 18:21:45 by pconin           ###   ########.fr       */
+/*   Created: 2015/11/25 14:43:40 by pconin            #+#    #+#             */
+/*   Updated: 2015/12/05 21:26:22 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/headerfillit.h"
-#define BUF_SIZE 4096
+#include "libft.h"
 
-
-int		main(int argc, char **argv)
+int		ft_atoi(const char *str)
 {
-	char buf[BUF_SIZE + 1];
-	int	fd;
-	int ret;
+	int x;
+	int i;
+	int n;
 
-	if (argc != 1)
-		return (ft_error);
-	fd = open(argv[1], O_RDONLY);
-	ret = read(fd, buf , BUF_SIZE);
-	buf[ret] = '\0';
-//	error = ft_check;
-	printf("%s\n", buf);
-	return (0);
+	i = 0;
+	x = 0;
+	n = 1;
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
+			|| str[i] == '\f' || str[i] == '\v' || str[i] == '\r')
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			n = -1;
+		i++;
+	}
+	while (ft_isdigit(str[i]) == 1)
+	{
+		x = x * 10 + str[i] - 48;
+		i++;
+	}
+	return (x * n);
 }

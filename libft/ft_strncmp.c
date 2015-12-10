@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/08 17:45:31 by pconin            #+#    #+#             */
-/*   Updated: 2015/12/10 18:21:45 by pconin           ###   ########.fr       */
+/*   Created: 2015/11/27 12:28:57 by pconin            #+#    #+#             */
+/*   Updated: 2015/12/04 19:11:06 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/headerfillit.h"
-#define BUF_SIZE 4096
+#include <string.h>
 
-
-int		main(int argc, char **argv)
+int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	char buf[BUF_SIZE + 1];
-	int	fd;
-	int ret;
+	size_t			a;
+	unsigned char	*b1;
+	unsigned char	*b2;
 
-	if (argc != 1)
-		return (ft_error);
-	fd = open(argv[1], O_RDONLY);
-	ret = read(fd, buf , BUF_SIZE);
-	buf[ret] = '\0';
-//	error = ft_check;
-	printf("%s\n", buf);
-	return (0);
+	b1 = (unsigned char *)s1;
+	b2 = (unsigned char *)s2;
+	a = 0;
+	if (n == 0)
+		return (0);
+	while (*b1 && *b2)
+	{
+		if (*b1 != *b2)
+			break ;
+		if (a == n - 1)
+			break ;
+		b1++;
+		b2++;
+		a++;
+	}
+	return (*b1 - *b2);
 }

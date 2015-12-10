@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/08 17:45:31 by pconin            #+#    #+#             */
-/*   Updated: 2015/12/10 18:21:45 by pconin           ###   ########.fr       */
+/*   Created: 2015/11/24 17:25:33 by pconin            #+#    #+#             */
+/*   Updated: 2015/12/08 14:17:13 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/headerfillit.h"
-#define BUF_SIZE 4096
+#include <stdlib.h>
+#include "libft.h"
 
-
-int		main(int argc, char **argv)
+void	*ft_memalloc(size_t size)
 {
-	char buf[BUF_SIZE + 1];
-	int	fd;
-	int ret;
+	unsigned char *fresh;
 
-	if (argc != 1)
-		return (ft_error);
-	fd = open(argv[1], O_RDONLY);
-	ret = read(fd, buf , BUF_SIZE);
-	buf[ret] = '\0';
-//	error = ft_check;
-	printf("%s\n", buf);
-	return (0);
+	if (size == 0)
+		return (NULL);
+	fresh = (unsigned char *)malloc(sizeof(unsigned char) * size);
+	if (fresh == NULL)
+		return (NULL);
+	ft_bzero(fresh, size);
+	return ((void *)fresh);
 }

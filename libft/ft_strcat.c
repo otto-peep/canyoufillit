@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/08 17:45:31 by pconin            #+#    #+#             */
-/*   Updated: 2015/12/10 18:21:45 by pconin           ###   ########.fr       */
+/*   Created: 2015/11/26 14:14:50 by pconin            #+#    #+#             */
+/*   Updated: 2015/12/05 21:30:10 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/headerfillit.h"
-#define BUF_SIZE 4096
+#include <string.h>
+#include "libft.h"
 
-
-int		main(int argc, char **argv)
+char	*ft_strcat(char *s1, const char *s2)
 {
-	char buf[BUF_SIZE + 1];
-	int	fd;
-	int ret;
+	size_t	a;
+	char	*dst;
+	size_t	b;
 
-	if (argc != 1)
-		return (ft_error);
-	fd = open(argv[1], O_RDONLY);
-	ret = read(fd, buf , BUF_SIZE);
-	buf[ret] = '\0';
-//	error = ft_check;
-	printf("%s\n", buf);
-	return (0);
+	b = 0;
+	dst = s1;
+	a = ft_strlen(s1);
+	while (s2[b] != '\0')
+	{
+		dst[a] = s2[b];
+		a++;
+		b++;
+	}
+	dst[a] = '\0';
+	return (s1);
 }

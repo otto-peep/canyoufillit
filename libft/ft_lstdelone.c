@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/08 17:45:31 by pconin            #+#    #+#             */
-/*   Updated: 2015/12/10 18:21:45 by pconin           ###   ########.fr       */
+/*   Created: 2015/12/09 17:30:25 by pconin            #+#    #+#             */
+/*   Updated: 2015/12/09 17:53:13 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/headerfillit.h"
-#define BUF_SIZE 4096
+#include <stdlib.h>
+#include "libft.h"
 
-
-int		main(int argc, char **argv)
+void	ft_lstdelone(t_list **alst, void (*del)(void*, size_t))
 {
-	char buf[BUF_SIZE + 1];
-	int	fd;
-	int ret;
-
-	if (argc != 1)
-		return (ft_error);
-	fd = open(argv[1], O_RDONLY);
-	ret = read(fd, buf , BUF_SIZE);
-	buf[ret] = '\0';
-//	error = ft_check;
-	printf("%s\n", buf);
-	return (0);
+	if (alst && del)
+	{
+		del(&((*alst)->content), ((*alst)->content_size));
+		free(*alst);
+		*alst = NULL;
+	}
 }

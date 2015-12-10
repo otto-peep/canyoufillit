@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/08 17:45:31 by pconin            #+#    #+#             */
-/*   Updated: 2015/12/10 18:21:45 by pconin           ###   ########.fr       */
+/*   Created: 2015/11/29 18:21:38 by pconin            #+#    #+#             */
+/*   Updated: 2015/12/07 14:26:54 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/headerfillit.h"
-#define BUF_SIZE 4096
+#include <string.h>
 
-
-int		main(int argc, char **argv)
+int		ft_strequ(char const *s1, char const *s2)
 {
-	char buf[BUF_SIZE + 1];
-	int	fd;
-	int ret;
+	int	a;
 
-	if (argc != 1)
-		return (ft_error);
-	fd = open(argv[1], O_RDONLY);
-	ret = read(fd, buf , BUF_SIZE);
-	buf[ret] = '\0';
-//	error = ft_check;
-	printf("%s\n", buf);
-	return (0);
+	a = 0;
+	if (s1 && s2)
+	{
+		while (s1[a] == s2[a] && s1[a] && s2[a])
+			a++;
+		if (s1[a] == '\0' && s2[a] == '\0')
+			return (1);
+		else
+			return (0);
+	}
+	else
+		return (0);
 }

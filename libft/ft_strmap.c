@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fillit.c                                           :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/08 17:45:31 by pconin            #+#    #+#             */
-/*   Updated: 2015/12/10 18:21:45 by pconin           ###   ########.fr       */
+/*   Created: 2015/11/29 17:12:15 by pconin            #+#    #+#             */
+/*   Updated: 2015/12/07 14:25:57 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/headerfillit.h"
-#define BUF_SIZE 4096
+#include <stdlib.h>
+#include <string.h>
+#include "libft.h"
 
-
-int		main(int argc, char **argv)
+char	*ft_strmap(char const *s, char (*f)(char))
 {
-	char buf[BUF_SIZE + 1];
-	int	fd;
-	int ret;
+	char	*str;
+	int		a;
+	int		i;
 
-	if (argc != 1)
-		return (ft_error);
-	fd = open(argv[1], O_RDONLY);
-	ret = read(fd, buf , BUF_SIZE);
-	buf[ret] = '\0';
-//	error = ft_check;
-	printf("%s\n", buf);
-	return (0);
+	i = 0;
+	str = NULL;
+	if (s && f)
+	{
+		a = (char)ft_strlen(s);
+		str = (char *)malloc(sizeof(char) * (a + 1));
+		while (i != a)
+		{
+			str[i] = f(s[i]);
+			i++;
+		}
+		str[i] = '\0';
+	}
+	return (str);
 }
