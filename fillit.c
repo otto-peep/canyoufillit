@@ -6,16 +6,18 @@
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 17:45:31 by pconin            #+#    #+#             */
-/*   Updated: 2015/12/10 19:17:28 by pconin           ###   ########.fr       */
+/*   Updated: 2015/12/11 13:11:11 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/headerfillit.h"
+#include "libft.h"
+#include "headerfillit.h"
 #define BUF_SIZE 4096
 
 int		ft_check(char *buf)
 {
-	ft_checkmap(buf)
+	check_map(buf);
+	return (0);
 }
 
 int		main(int argc, char **argv)
@@ -25,11 +27,17 @@ int		main(int argc, char **argv)
 	int ret;
 
 	if (argc != 1)
-		return (ft_error);
+	{
+		ft_putstr("error");
+		return (0);
+	}
 	fd = open(argv[1], O_RDONLY);
 	ret = read(fd, buf , BUF_SIZE);
-	if (ret = NULL)
-		return (ft_error);
+	if (ret < 0)
+	{
+		ft_putstr("error");
+		return (0);
+	}
 	buf[ret] = '\0';
 //	error = ft_check;
 	printf("%s\n", buf);

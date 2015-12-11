@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/08 18:23:09 by pconin            #+#    #+#             */
-/*   Updated: 2015/12/10 18:38:14 by pconin           ###   ########.fr       */
+/*   Created: 2015/12/11 12:36:23 by pconin            #+#    #+#             */
+/*   Updated: 2015/12/11 12:59:08 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,14 @@
 # include <stdlib.h>
 #include <fcntl.h>
 
-typedef struct s_list
+typedef struct s_lst
 {
-	char			**tetri;
-	struct s_list	*next;
+		char			**tetri;
+			struct s_list	*next;
 }				t_tri;
 
 int		ft_error(void);
-L
+int		check_map(char *buf);
+int		check_char(char *buf);
 
 #endif

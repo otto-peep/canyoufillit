@@ -6,11 +6,12 @@
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 18:13:57 by pconin            #+#    #+#             */
-/*   Updated: 2015/12/10 18:41:46 by pconin           ###   ########.fr       */
+/*   Updated: 2015/12/11 13:11:29 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/headerfillit.h"
+#include "headerfillit.h"
+#include "libft.h"
 
 int		ft_error(void)
 {
