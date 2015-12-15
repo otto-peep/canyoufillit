@@ -6,17 +6,19 @@
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 18:54:46 by pconin            #+#    #+#             */
-/*   Updated: 2015/12/15 17:42:08 by pconin           ###   ########.fr       */
+/*   Updated: 2015/12/15 18:26:05 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "headerfillit.h"
 #include "libft.h"
 
-int		check_line(char *buf, int index)
+int		check_line(char *buf, int ind)
 {
 	int a;
+	int index;
 
+	index = ind;
 	a = 4;
 	while (a > 0 && buf[index] != '\n')
 	{
@@ -24,9 +26,15 @@ int		check_line(char *buf, int index)
 		a--;
 	}
 	if (a != 0)
+	{
+		ft_putstr("te");
 		return (0);
+	}
 	else
+	{
+		ft_putstr("zo");
 		return (1);
+	}
 }
 		
 int		check_char(char *buf)
@@ -48,18 +56,22 @@ int		check_map(char *buf)
 	int	index;
 	int	a;
 
-	while (buf)
+	index = 0;
+	while (buf[index])
 	{
 		a = 4;
-		while (a > 0 && check_line(buf, index))
+		while (a > 0 && check_line(buf, index) == 1)
 		{
+			ft_putstr("x");
 			a--;
-			index = index + 4;
 		}
-		if (buf[index++] != '\n' || check_line(buf, index) != 1)
+		if (buf[index + 4] != '\n' || check_line(buf, index) != 1)
+		{
+			ft_putstr("hi");
 			return (0);
+		}
 		else
-			index++;
+			index = index + 5;
 	}
 	return (1);
 }
