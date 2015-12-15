@@ -6,25 +6,38 @@
 #    By: pconin <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/10 15:21:08 by pconin            #+#    #+#              #
-#    Updated: 2015/12/11 13:26:36 by pconin           ###   ########.fr        #
+#    Updated: 2015/12/15 17:30:51 by pconin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = test
+NAME = atest
 
-SRC = ./fillit.c	\
-	  ./error.c		\
-	  ./check.c
+FILES = cat_a.c	\
+	   ./fct/libft.a
 
-HEAD = ./includes/
+FILE =	./fct/libft.a	\
+		fillit.c		\
+	 	check.c
+
+PATHFT = ./fct/
 
 FLAGS = -Wall -Wextra -Werror
 
+OBJRDIR = .
+
+SRC = $(FILE:%c=$(PATHFT)%c)
+
+OBJ = $(FILE:%.c=$(OBJDIR)/%.o)
+	
+HEADER = ./includes
+
 $(NAME) :
-	gcc -o $(NAME) $(SRC) -I $(HEAD) 
+	gcc -o $(NAME) $(SRC) -I $(HEADER)
+
+all: $(NAME)
 
 clean:
-	rm -f *.o
+	rm -f $(OBJ)
 
 fclean:
 	rm -f $(NAME)

@@ -1,32 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   headerfillit.h                                     :+:      :+:    :+:   */
+/*   cat_a.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/11 12:36:23 by pconin            #+#    #+#             */
-/*   Updated: 2015/12/15 17:30:04 by pconin           ###   ########.fr       */
+/*   Created: 2015/12/15 15:34:35 by pconin            #+#    #+#             */
+/*   Updated: 2015/12/15 16:22:48 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEADERFILLIT_H
+#include <stdio.h>
+#include "libft.h"
 
-# define HEADERFILLIT_H
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-#include <fcntl.h>
-
-typedef struct s_lst
+int	main(void)
 {
-		char			**tetri;
-			struct s_list	*next;
-}				t_tri;
-
-int		check_line(char *buf, int index);
-int		check_char(char *buf);
-int		check_map(char *buf);
-int		ft_check(char *buf);
-
-#endif
+	ft_putstr("bb");
+	return (0);
+}
