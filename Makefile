@@ -6,7 +6,7 @@
 #    By: pconin <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/10 15:21:08 by pconin            #+#    #+#              #
-#    Updated: 2015/12/15 17:30:51 by pconin           ###   ########.fr        #
+#    Updated: 2015/12/23 18:52:40 by pconin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ FILES = cat_a.c	\
 
 FILE =	./fct/libft.a	\
 		fillit.c		\
-	 	check.c
+	 	check.c			\
+		error.c
 
 PATHFT = ./fct/
 

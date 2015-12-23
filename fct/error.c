@@ -5,16 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/10 18:13:57 by pconin            #+#    #+#             */
-/*   Updated: 2015/12/11 13:11:29 by pconin           ###   ########.fr       */
+/*   Created: 2015/12/23 18:44:30 by pconin            #+#    #+#             */
+/*   Updated: 2015/12/23 18:52:17 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "headerfillit.h"
-#include "libft.h"
 
-int		ft_error(void)
+void	error(int a)
 {
-	ft_putstr("error");
-	return (0);
+	printf("%s%i\n", "error", a);
+	exit(0);
 }

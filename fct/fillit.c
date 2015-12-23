@@ -6,7 +6,7 @@
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 17:45:31 by pconin            #+#    #+#             */
-/*   Updated: 2015/12/15 17:36:03 by pconin           ###   ########.fr       */
+/*   Updated: 2015/12/23 18:59:09 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,14 @@ int		main(int argc, char **argv)
 	int ret;
 
 	if (argc != 2)
-	{
-		ft_putstr("error");
-		return (0);
-	}
+		error(1);
 	fd = open(argv[1], O_RDONLY);
 	ret = read(fd, buf , BUF_SIZE);
 	if (ret < 0)
-	{
-		ft_putstr("error2");
-		return (0);
-	}
+		error(2);
 	buf[ret] = '\0';
 	if (ft_check(buf) != 1)
-	{
-		ft_putstr("error3");
-		return (0);
-	}
-//	printf("%s\n", buf);
+		error(3);
+	printf("%s", buf);
 	return (0);
 }
