@@ -6,7 +6,7 @@
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 17:45:31 by pconin            #+#    #+#             */
-/*   Updated: 2015/12/24 20:33:58 by pconin           ###   ########.fr       */
+/*   Updated: 2015/12/24 21:59:56 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 #include "headerfillit.h"
 #define BUF_SIZE 4096
 
-int		amain(int argc, char **argv)
+int		main(int argc, char **argv)
 {
 	char	buf[BUF_SIZE + 1];
 	int		fd;
 	int		ret;
-	p_list	*tetri;	
+	p_list	*tetri;
+	p_list	*begin_list;
+
 	if (argc != 2)
 		error(1);
 	fd = open(argv[1], O_RDONLY);
@@ -30,19 +32,7 @@ int		amain(int argc, char **argv)
 	if (ft_check(buf) != 1)
 		error(3);
 	ft_get_piece(&tetri, buf, ret);
-	ft_print_list(tetri);
-//	resolution(tetri);
-//	printf("%s", buf);
-	return (0);
-}
-
-int		main(void)
-{
-	char **map;
-	int		sqtall;
-
-	sqtall = 4;
-	map = NULL;
-	update_map(sqtall, map);
+//	ft_print_list(tetri);
+	resolution(tetri);
 	return (0);
 }

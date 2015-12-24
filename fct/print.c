@@ -6,7 +6,7 @@
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/24 19:00:04 by pconin            #+#    #+#             */
-/*   Updated: 2015/12/24 20:25:18 by pconin           ###   ########.fr       */
+/*   Updated: 2015/12/24 20:58:19 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	ft_print_board(char **tab)
 	while (tab[i] != NULL)
 	{
 		ft_putstr(tab[i]);
+		ft_putstr("\n");
 		i++;
 	}
 }
