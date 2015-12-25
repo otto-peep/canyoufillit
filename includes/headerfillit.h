@@ -6,7 +6,7 @@
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 12:36:23 by pconin            #+#    #+#             */
-/*   Updated: 2015/12/25 13:11:26 by pconin           ###   ########.fr       */
+/*   Updated: 2015/12/25 16:08:12 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,11 @@ typedef struct	tetris
 		struct tetris	*next;
 }						p_list;
 
+char	**ft_print_in_map(char **map, char t, int xm, int ym);
+int		trytoprint(char **map, p_list *tetri, int sqtall, int xt, int yt);
 void	ft_printandquit(char **map);
 char	**update_map(int sqtall, char ascii, char **map);
-void	ft_recur_resolution(int sqtall, char **map);
+void	ft_recur_resolution(int sqtall, char **map, p_list *tetri);
 int		ft_min_sqtall(p_list *tetri);
 void	resolution(p_list *tetri);
 char	**init_map(int sqtall, char **map);

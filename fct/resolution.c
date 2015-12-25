@@ -6,7 +6,7 @@
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/24 19:15:31 by pconin            #+#    #+#             */
-/*   Updated: 2015/12/25 13:11:28 by pconin           ###   ########.fr       */
+/*   Updated: 2015/12/25 16:23:00 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 
 void	ft_recur_resolution(int sqtall, char **map, p_list *tetri)
 {
+
 	map = update_map(sqtall, tetri->ascii, map);
-	while (tetri->next)
+	if (tetri != NULL)
 	{
 		while (tetri->x <= sqtall)
 		{
-			tetri->y = 0
+			tetri->y = 0;
 			while (tetri->y <= sqtall)
 			{
-				if (trytoprint = 1 && tetri->next != NULL)
+				if (trytoprint(map, tetri, sqtall, tetri->x, tetri->y) == 1 && tetri->next != NULL)
 					ft_recur_resolution(sqtall, map, tetri->next);
-				if (trytoprint = 1 && tetri->next == NULL)
+				else if (trytoprint(map, tetri, sqtall, tetri->x, tetri->y) == 1 && tetri->next == NULL)
 					ft_printandquit(map);
-				}
 				else
 					tetri->y = tetri->y + 1;
 			}
@@ -38,12 +38,9 @@ void	ft_recur_resolution(int sqtall, char **map, p_list *tetri)
 	if (tetri->x == sqtall && tetri->y == sqtall)
 	{
 		map = init_map(sqtall++, map);
-		ft_recur_resolution(sqtall, map);
-	
-
-
-
-					
+		ft_recur_resolution(sqtall, map, tetri);
+		return ;
+	}
 }
 
 void	resolution(p_list *tetri)
@@ -53,7 +50,8 @@ void	resolution(p_list *tetri)
 
 	sqtall = ft_min_sqtall(tetri);
 	map = init_map(sqtall, map);
-	ft_recur_resolution(sqtall, map);
+	ft_print_board(map);
+	ft_recur_resolution(sqtall, map, tetri);
 	return ;
 }
 

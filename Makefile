@@ -6,7 +6,7 @@
 #    By: pconin <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/10 15:21:08 by pconin            #+#    #+#              #
-#    Updated: 2015/12/24 21:18:07 by pconin           ###   ########.fr        #
+#    Updated: 2015/12/25 15:30:32 by pconin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ FILE =	./fct/libft.a	\
 		print.c			\
 		map.c			\
 		resolution.c	\
-		min_sqtall.c
+		min_sqtall.c	\
+		putpieces.c
 
 
 PATHFT = ./fct/

@@ -6,7 +6,7 @@
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/24 18:35:52 by pconin            #+#    #+#             */
-/*   Updated: 2015/12/25 12:43:44 by pconin           ###   ########.fr       */
+/*   Updated: 2015/12/25 16:35:18 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,18 +95,21 @@ void	ft_get_piece(p_list **list, char *buf, size_t len)
 	size_t shift;
 	size_t count;
 	size_t i;
+	size_t count2;
 
 	start = 0;
 	i = 1;
 	shift = 21;
-	*list = ft_create_elmt(&buf[start]);
+	count2 = 0;
+	*list = ft_create_elmt(&buf[start], count2);
 	(*list)->next = NULL;
 	start = start + shift;
 	count = len / shift;
 	while (i != count + 1)
 	{
-		ft_list_push_back(list, &buf[start], count);
+		ft_list_push_back(list, &buf[start], count2);
 		start = start + shift;
 		i++;
+		count2++;
 	}
 }
