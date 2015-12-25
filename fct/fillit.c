@@ -6,7 +6,7 @@
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 17:45:31 by pconin            #+#    #+#             */
-/*   Updated: 2015/12/24 21:59:56 by pconin           ###   ########.fr       */
+/*   Updated: 2015/12/25 12:21:25 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int		main(int argc, char **argv)
 	if (ft_check(buf) != 1)
 		error(3);
 	ft_get_piece(&tetri, buf, ret);
+	ft_putchar(tetri->ascii);
 //	ft_print_list(tetri);
 	resolution(tetri);
 	return (0);

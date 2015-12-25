@@ -6,7 +6,7 @@
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/24 18:35:52 by pconin            #+#    #+#             */
-/*   Updated: 2015/12/24 19:45:09 by pconin           ###   ########.fr       */
+/*   Updated: 2015/12/25 12:43:44 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	**ft_map_piece(size_t l, char const *str)
 	return (tab);
 }
 
-p_list	*ft_create_elmt(char const *content)
+p_list	*ft_create_elmt(char const *content, int count)
 {
 	p_list	*new;
 	size_t	len;
@@ -63,6 +63,9 @@ p_list	*ft_create_elmt(char const *content)
 			return (NULL);
 		len = ft_strlen(content);
 		new->piece = ft_map_piece(len, content);
+		new->x = 0;
+		new->y = 0;
+		new->ascii = count + 97;
 		if (new->piece == NULL)
 			return (NULL);
 		new->next = NULL;
@@ -71,7 +74,7 @@ p_list	*ft_create_elmt(char const *content)
 	return (NULL);
 }
 
-void	ft_list_push_back(p_list **begin_list, char const *str)
+void	ft_list_push_back(p_list **begin_list, char const *str, int count)
 {
 	p_list *new;
 	p_list *memory;
@@ -81,7 +84,7 @@ void	ft_list_push_back(p_list **begin_list, char const *str)
 	{
 		*begin_list = (*begin_list)->next;
 	}
-	new = ft_create_elmt(str);
+	new = ft_create_elmt(str, count);
 	(*begin_list)->next = new;
 	*begin_list = &(*memory);
 }
@@ -102,7 +105,7 @@ void	ft_get_piece(p_list **list, char *buf, size_t len)
 	count = len / shift;
 	while (i != count + 1)
 	{
-		ft_list_push_back(list, &buf[start]);
+		ft_list_push_back(list, &buf[start], count);
 		start = start + shift;
 		i++;
 	}
