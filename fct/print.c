@@ -6,7 +6,7 @@
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/24 19:00:04 by pconin            #+#    #+#             */
-/*   Updated: 2015/12/25 16:07:51 by pconin           ###   ########.fr       */
+/*   Updated: 2015/12/25 16:41:54 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_print_board(char **tab)
 	int i;
 
 	i = 0;
-	while (i != 4)
+	while (tab[i] != NULL)
 	{
 		ft_putstr(tab[i]);
 		ft_putstr("\n");
