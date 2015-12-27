@@ -6,7 +6,7 @@
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/24 19:15:31 by pconin            #+#    #+#             */
-/*   Updated: 2015/12/27 20:10:21 by pconin           ###   ########.fr       */
+/*   Updated: 2015/12/27 21:03:33 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@ void	ft_recur_resolution(int sqtall, char **map, p_list *tetri)
 			tetri->y = 0;
 			while (tetri->y <= sqtall)
 			{
-				if (trytoprint(map, tetri, sqtall, tetri->x, tetri->y) == 1 && tetri->next == NULL)
+				if (trytoprint(map, tetri, sqtall, tetri->x, tetri->y) == 1 && tetri->next != NULL)
 				{
+					map = ft_print_in_map(map, tetri->x, tetri->y, tetri);
+					ft_putstr("zzzz");
 					ft_printandquit(map);
 					return ;
 				}
@@ -41,12 +43,14 @@ void	ft_recur_resolution(int sqtall, char **map, p_list *tetri)
 		}
 		
 	}
+	ft_putstr("entredeuxif\n");
 	if (tetri->x == sqtall && tetri->y == sqtall)
 	{
 		map = init_map(sqtall++, map);
 		ft_recur_resolution(sqtall, map, tetri);
 		return ;
 	}
+//	ft_print_board(map);
 }
 
 void	resolution(p_list *tetri)
