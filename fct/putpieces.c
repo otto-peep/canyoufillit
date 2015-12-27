@@ -6,19 +6,21 @@
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/25 13:17:28 by pconin            #+#    #+#             */
-/*   Updated: 2015/12/25 16:06:23 by pconin           ###   ########.fr       */
+/*   Updated: 2015/12/27 18:18:24 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "headerfillit.h"
 
-char	**ft_print_in_map(char **map, char t, int xm, int ym)
+char	**ft_print_in_map(char **map, char t, int xm, int ym, p_list *tetri)
 {
 	char **newmap;
 
+	if (t == '.')
+		return (map);
 	newmap = map;
-	newmap[xm][ym] = t;
+	newmap[xm][ym] = tetri->ascii;
 	return (newmap);
 }
 
@@ -41,7 +43,7 @@ int		trytoprint(char **map, p_list *tetri, int sqtall, int xm, int ym)
 			t = tetri->piece[xt][yt];
 			if (m == '.' ||
 				(m != '.' && t == '.'))
-				map = ft_print_in_map(map, t, xm, ym);
+				map = ft_print_in_map(map, t, xm, ym, tetri);
 			else
 				return (0);
 			ym++;
@@ -51,5 +53,6 @@ int		trytoprint(char **map, p_list *tetri, int sqtall, int xm, int ym)
 		xm++;
 		xt++;
 	}
+	ft_putstr("hola");
 	return (1);
 }
