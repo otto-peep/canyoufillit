@@ -6,7 +6,7 @@
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 17:45:31 by pconin            #+#    #+#             */
-/*   Updated: 2015/12/27 20:10:59 by pconin           ###   ########.fr       */
+/*   Updated: 2015/12/28 18:02:44 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int		main(int argc, char **argv)
 	int		ret;
 	p_list	*tetri;
 	p_list	*begin_list;
+	int		sqtall;
 
 	if (argc != 2)
 		error(1);
@@ -32,6 +33,7 @@ int		main(int argc, char **argv)
 	if (ft_check(buf) != 1)
 		error(3);
 	ft_get_piece(&tetri, buf, ret);
-	resolution(tetri);
+	sqtall = ft_min_sqtall(tetri);
+	resolution(tetri, sqtall);
 	return (0);
 }

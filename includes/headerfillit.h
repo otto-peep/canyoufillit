@@ -6,7 +6,7 @@
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 12:36:23 by pconin            #+#    #+#             */
-/*   Updated: 2015/12/27 20:54:43 by pconin           ###   ########.fr       */
+/*   Updated: 2015/12/28 17:46:39 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ char	**ft_print_in_map(char **map, int xm, int ym, p_list *tetri);
 int		trytoprint(char **map, p_list *tetri, int sqtall, int xt, int yt);
 void	ft_printandquit(char **map);
 char	**update_map(int sqtall, char ascii, char **map);
-void	ft_recur_resolution(int sqtall, char **map, p_list *tetri);
+void	ft_recur_resolution(int sqtall, char **map, p_list *tetri, p_list **begin_list);
 int		ft_min_sqtall(p_list *tetri);
-void	resolution(p_list *tetri);
+void	resolution(p_list *tetri, int sqtall);
 char	**init_map(int sqtall, char **map);
 void	ft_print_list(p_list *list);
 void	ft_print_board(char **tab);

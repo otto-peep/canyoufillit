@@ -6,7 +6,7 @@
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/25 13:17:28 by pconin            #+#    #+#             */
-/*   Updated: 2015/12/27 20:55:05 by pconin           ###   ########.fr       */
+/*   Updated: 2015/12/28 17:35:06 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ char	**ft_print_in_map(char **map, int xm, int ym, p_list *tetri)
 	char **newmap;
 	int		xt;
 	int		yt;
-	
+
+	newmap = map;
 	xt = 0;
 	while (xt != 4)
 	{
@@ -26,7 +27,7 @@ char	**ft_print_in_map(char **map, int xm, int ym, p_list *tetri)
 		while (yt != 4)
 		{
 			if (tetri->piece[xt][yt] != '.')
-				map[xm][ym] = tetri->piece[xt][yt];
+				map[xm][ym] = tetri->ascii;
 			ym++;
 			yt++;
 		}
