@@ -31,7 +31,7 @@ char	**ft_print_in_map(char **map, int xm, int ym, p_list *tetri);
 int		trytoprint(char **map, p_list *tetri, int sqtall, int xt, int yt);
 void	ft_printandquit(char **map);
 char	**update_map(int sqtall, char ascii, char **map);
-void	ft_recur_resolution(int sqtall, char **map, p_list *tetri, p_list **begin_list);
+void	ft_recur_resolution(int sqtall, char **map, p_list *tetri);
 int		ft_min_sqtall(p_list *tetri);
 void	resolution(p_list *tetri, int sqtall);
 char	**init_map(int sqtall, char **map);
