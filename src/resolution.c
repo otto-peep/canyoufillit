@@ -6,7 +6,7 @@
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/24 19:15:31 by pconin            #+#    #+#             */
-/*   Updated: 2016/01/05 15:03:22 by pconin           ###   ########.fr       */
+/*   Updated: 2016/01/05 18:23:38 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,15 @@
 
 void	ft_recur_resolution(int sqtall, char **map, p_list *tetri, p_list **begin_list)
 {
-	p_list *memtetri;
+//	p_list *nexttetri;
 
-	memtetri = tetri;
-	tetri->next = reinit_tetri(tetri);
+//	nexttetri = tetri->next;
+//	if (nexttetri)
+//		nexttetri = reinit_tetri(nexttetri);
 	map = update_map(sqtall, tetri->ascii, map);
 	if (trytoprint(map, tetri, sqtall, tetri->x, tetri->y) == 1 && tetri->next == NULL)
 	{
+		ft_putstr("hey");
 		map = ft_print_in_map(map, tetri->x, tetri->y, tetri);
 		ft_printandquit(map);
 		return ;
@@ -41,6 +43,7 @@ void	ft_recur_resolution(int sqtall, char **map, p_list *tetri, p_list **begin_l
 				}
 				else if (trytoprint(map, tetri, sqtall, tetri->x, tetri->y) == 1 && tetri->next != NULL)
 				{
+					ft_putstr("yiha");
 					map = ft_print_in_map(map, tetri->x, tetri->y, tetri);
 					ft_recur_resolution(sqtall, map, tetri->next, begin_list);
 					return ;
@@ -51,16 +54,23 @@ void	ft_recur_resolution(int sqtall, char **map, p_list *tetri, p_list **begin_l
 			tetri->x++;
 		}
 		while (tetri->x == sqtall && tetri->y == sqtall && tetri->ascii != 'A')
-		{
 			tetri = prev_tetri(tetri->ascii, begin_list);
-		}
 		if (tetri->y < sqtall)
 			tetri->y++;
 		if (tetri->x < sqtall)
 			tetri->x++;
-		ft_recur_resolution(sqtall, map, tetri, begin_list);
+		if (tetri->ascii == 'A' && tetri->x == sqtall && tetri->y == sqtall)
+			break ;
+		else
+		{
+			tetri = reinit_tetri(tetri);
+			ft_recur_resolution(sqtall, map, tetri, begin_list);
+		}
+			
 	}
-	resolution (*begin_list, sqtall++);
+	ft_putstr("jevais");
+	sqtall++;
+	resolution(*begin_list, sqtall);
 }
 
 void	resolution(p_list *tetri, int sqtall)
