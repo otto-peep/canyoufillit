@@ -6,11 +6,10 @@
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/24 18:35:52 by pconin            #+#    #+#             */
-/*   Updated: 2016/01/04 18:48:50 by banthony         ###   ########.fr       */
+/*   Updated: 2016/01/13 13:00:06 by banthony         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "lib_fillit.h"
 #include <stdlib.h>
 
@@ -51,17 +50,17 @@ char	**ft_map_piece(size_t l, char const *str)
 	return (tab);
 }
 
-p_list	*ft_create_elmt(char const *content, int count)
+t_list	*ft_create_elmt(char const *content, int count)
 {
-	p_list	*new;
+	t_list	*new;
 
 	if (content)
 	{
 		new = NULL;
-		new = (p_list *)malloc(sizeof(p_list));
+		new = (t_list *)malloc(sizeof(t_list));
 		if (new == NULL)
 			return (NULL);
-		new->piece = ft_map_piece(nb_l, content);
+		new->piece = ft_map_piece(NB_L, content);
 		new->x = 0;
 		new->y = 0;
 		new->ascii = 'A' + count;
@@ -73,39 +72,37 @@ p_list	*ft_create_elmt(char const *content, int count)
 	return (NULL);
 }
 
-void	ft_list_push_back(p_list **begin_list, char const *str, int count)
+void	ft_list_push_back(t_list **bgn_lst, char const *str, int count)
 {
-	p_list *new;
-	p_list *memory;
+	t_list *new;
+	t_list *memory;
 
-	memory = (*begin_list);
-	while ((*begin_list)->next != NULL)
+	memory = (*bgn_lst);
+	while ((*bgn_lst)->next != NULL)
 	{
-		*begin_list = (*begin_list)->next;
+		*bgn_lst = (*bgn_lst)->next;
 	}
 	new = ft_create_elmt(str, count);
-	(*begin_list)->next = new;
-	*begin_list = &(*memory);
+	(*bgn_lst)->next = new;
+	*bgn_lst = &(*memory);
 }
 
-void	ft_get_piece(p_list **list, char *buf, size_t len)
+void	ft_get_piece(t_list **list, char *buf, size_t len)
 {
 	size_t start;
-	size_t shift;
 	size_t count;
 	size_t i;
 
 	start = 0;
 	i = 1;
-	shift = 21;
 	*list = ft_create_elmt(&buf[start], -30);
 	(*list)->next = NULL;
-	start = start + shift;
-	count = len / shift;
-	while (i != count)
+	start = start + 21;
+	count = len / 21;
+	while (i != count + 1)
 	{
 		ft_list_push_back(list, &buf[start], -30);
-		start = start + shift;
+		start = start + 21;
 		i++;
 	}
 }

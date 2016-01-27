@@ -6,21 +6,53 @@
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/24 19:00:04 by pconin            #+#    #+#             */
-/*   Updated: 2016/01/05 16:51:04 by pconin           ###   ########.fr       */
+/*   Updated: 2016/01/12 17:20:09 by banthony         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "lib_fillit.h"
 #include <stdlib.h>
 
-void	ft_printandquit(char **map)
+static	int	len_sqtall(char **map)
 {
-	ft_print_board(map);
+	int	sqtall;
+
+	sqtall = 0;
+	while (map[sqtall][0] != '*')
+		sqtall++;
+	return (sqtall);
+}
+
+void		ft_printandquit(char **map)
+{
+	char	**mapsortie;
+	int		x;
+	int		y;
+	int		sqtall;
+
+	x = 0;
+	sqtall = len_sqtall(map);
+	if (!(mapsortie = (char **)malloc(sizeof(char *) * sqtall + 1)))
+		ft_error();
+	while (x < sqtall)
+	{
+		if (!(mapsortie[x] = (char *)malloc(sizeof(char) * sqtall + 1)))
+			ft_error();
+		y = 0;
+		while (y < sqtall)
+		{
+			mapsortie[x][y] = map[x][y];
+			y++;
+		}
+		mapsortie[x][y] = '\0';
+		x++;
+	}
+	mapsortie[x] = NULL;
+	ft_print_board(mapsortie);
 	exit(0);
 }
 
-void	ft_print_board(char **tab)
+void		ft_print_board(char **tab)
 {
 	int i;
 
@@ -29,24 +61,6 @@ void	ft_print_board(char **tab)
 	{
 		ft_putstr(tab[i]);
 		ft_putstr("\n");
-		i++;
-	}
-}
-
-void	ft_print_list(p_list *list)
-{
-	int i;
-
-	i = 1;
-	while (list != NULL)
-	{
-	//	ft_putchar('\n');
-		ft_putnbr(i);
-		ft_putchar('\n');
-		ft_print_board(list->piece);
-		if (!(list->next == NULL))
-			ft_putchar('\n');
-		list = list->next;
 		i++;
 	}
 }

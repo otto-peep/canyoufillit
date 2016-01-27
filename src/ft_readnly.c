@@ -6,12 +6,11 @@
 /*   By: banthony <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 18:36:01 by banthony          #+#    #+#             */
-/*   Updated: 2016/01/04 14:35:17 by pconin           ###   ########.fr       */
+/*   Updated: 2016/01/24 18:45:35 by banthony         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_fillit.h"
-#include <stdlib.h>
 #include <unistd.h>
 
 int	ft_readnly(int fd, char *dst, size_t size)

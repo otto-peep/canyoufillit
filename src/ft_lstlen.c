@@ -6,13 +6,13 @@
 /*   By: banthony <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/15 17:37:57 by banthony          #+#    #+#             */
-/*   Updated: 2015/12/22 15:02:07 by banthony         ###   ########.fr       */
+/*   Updated: 2016/01/11 15:41:20 by banthony         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_fillit.h"
 
-size_t	ft_lstlen(p_list *begin_list)
+size_t	ft_lstlen(t_list *begin_list)
 {
 	size_t count;
 

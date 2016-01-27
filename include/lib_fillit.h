@@ -6,13 +6,13 @@
 /*   By: banthony <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 09:37:33 by banthony          #+#    #+#             */
-/*   Updated: 2016/01/05 14:57:38 by pconin           ###   ########.fr       */
+/*   Updated: 2016/01/24 18:25:12 by banthony         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef		LIB_FILLIT_H
-# define	LIB_FILLIT_H
-#include <string.h>
+#ifndef LIB_FILLIT_H
+# define LIB_FILLIT_H
+# include <string.h>
 
 # define LG1	"###.\n..#.\n....\n....\n"
 # define LG2	".#..\n.#..\n##..\n....\n"
@@ -30,20 +30,20 @@
 # define ZG2	"#...\n##..\n.#..\n....\n"
 # define L1		"####\n....\n....\n....\n"
 # define L2		"#...\n#...\n#...\n#...\n"
-# define square	"##..\n##..\n....\n....\n"
+# define SQUARE	"##..\n##..\n....\n....\n"
 # define ZD1	"##..\n.##.\n....\n....\n"
 # define ZD2	".#..\n##..\n#...\n....\n"
-# define nb_l	4
-# define nb_c	6
+# define NB_L	4
+# define BUF_SIZE 4096
 
-typedef struct	tetris
+typedef struct	s_tetris
 {
 	char			**piece;
 	int				x;
 	int				y;
 	char			ascii;
-	struct tetris	*next;
-}					p_list;
+	struct s_tetris	*next;
+}				t_list;
 
 int				ft_open_rdly(char *file);
 int				ft_readnly(int fd, char *dst, size_t size);
@@ -52,38 +52,45 @@ int				ft_endline(char const *str);
 void			ft_error(void);
 void			ft_replace_sharp(char **piece, size_t rank);
 char			**ft_map_piece(size_t l, char const *str);
-void			ft_get_piece(p_list **list, char *buf, size_t len);
+void			ft_get_piece(t_list **list, char *buf, size_t len);
 void			ft_print_board(char **tab);
-p_list			*ft_create_elmt(char const *content, int count);
-void			ft_push_elmt_back(p_list **begin_list, p_list *new);
-void			ft_init_list(p_list **list);
-void			ft_print_list(p_list *list);
-size_t			ft_lstlen(p_list *begin_list);
-p_list			*ft_list_last(p_list *begin_list);
-void			ft_list_push_back(p_list **begin_list, char const *str, int count);
-void			ft_list_push_front(p_list **begin_list, char const *str);
-int				ft_lstcmp(char **piece1, char **piece2);
-p_list			*ft_identify(p_list **new, p_list **index, p_list *sort);
-p_list			*ft_partcmp(p_list *new, p_list *index);
-void			ft_first_c_inmap(char **map, size_t *i, size_t *j, char c);
-void			ft_open_create(char *file_name, char *content);
-void			ft_init_file(void);
-p_list			*ft_elmtcpy(p_list *list);
+t_list			*ft_create_elmt(char const *content, int count);
+void			ft_push_elmt_back(t_list **begin_list, t_list *new);
+void			ft_init_list(t_list **list);
+size_t			ft_lstlen(t_list *begin_list);
+void			ft_list_push_back(t_list **bgn_lst, char const *str, int count);
+void			ft_list_push_front(t_list **begin_list, char const *str);
+t_list			*ft_identify(t_list **new, t_list **index, t_list *sort);
+t_list			*ft_partcmp(t_list *new, t_list *index);
+void			ft_resolve2(int sqtall, t_list **tetri, char **map, int bool);
+void			ft_first_c_inmap(char **map, int *i, int *j, char c);
+t_list			*ft_elmtcpy(t_list *list);
 char			**ft_mapcpy(char **tab);
 int				ft_check(char *buf);
 int				check_map(char *buf);
 int				check_char(char *buf);
 int				check_line(char *buf, int index);
 char			**init_map(int sqtall, char **map);
-void			resolution(p_list *tetri, int sqtall);
-char			**ft_print_in_map(char **map, int xm, int ym, p_list *tetri);
-int				trytoprint(char **map, p_list *tetri, int sqtall, int xt, int yt);
+char			**ft_print_in_map(char **map, int xm, int ym, t_list *tetri);
+int				trytoprint2(char **map, t_list *tetri, int xm, int ym);
 void			ft_printandquit(char **map);
-char			**update_map(int sqtall, char ascii, char **map);
-void			ft_recur_resolution(int sqtall, char **map, p_list *tetri, p_list **begin_list);
-int				ft_min_sqtall(p_list *tetri);
-void			find_sqtall(p_list *tetri);
-p_list			*reinit_tetri(p_list *tetri);
-p_list			*prev_tetri(char c, p_list **begin_list);
+void			update_map(int sqtall, char **map, t_list *memory, int *bool);
+int				ft_min_sqtall(t_list *tetri);
+t_list			*reinit_tetri(t_list *tetri);
+t_list			*prev_tetri(char c, t_list **begin_list);
+void			ft_increase_map(char **map, int *sqtall);
+char			*ft_strsub(char const *s, unsigned int start, size_t len);
+char			*ft_strdup(const char *s1);
+void			*ft_memalloc(size_t size);
+void			ft_bzero(void *s, size_t n);
+void			*ft_memset(void *b, int c, size_t len);
+void			ft_putnbr(int n);
+void			ft_putchar(char c);
+void			ft_putstr(char const *s);
+char			*ft_strcpy(char *dst, const char *src);
+size_t			ft_strlen(const char *s);
+char			*ft_treatment(char *file, t_list **index);
+int				trytoprint(char **map, t_list *tetri, int sqtall);
+void			tetrizero(t_list *memory);
 
 #endif

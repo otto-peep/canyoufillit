@@ -6,68 +6,45 @@
 /*   By: banthony <banthony@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/31 16:45:40 by banthony          #+#    #+#             */
-/*   Updated: 2015/12/31 16:45:41 by banthony         ###   ########.fr       */
+/*   Updated: 2016/01/11 15:40:56 by banthony         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "lib_fillit.h"
-#include "libft.h"
 
-p_list	*ft_partcmp(p_list *new, p_list *index)
+static void		ft_init_partcmp(int *i, int *j, int *i2, int *j2)
 {
-	size_t i;
-	size_t j;
-	char **tnew;
-	char **tindex;
-	size_t i2;
-	size_t j2;
-	size_t count;
+	*i = 0;
+	*j = 0;
+	*i2 = 0;
+	*j2 = 0;
+}
 
-	i = 0;
-	j = 0;
-	i2 = 0;
-	j2 = 0;
+t_list			*ft_partcmp(t_list *new, t_list *index)
+{
+	int	i;
+	int	j;
+	int	i2;
+	int	j2;
+	int	count;
+
 	count = 0;
-	tnew = new->piece;
-	tindex = index->piece;
-	ft_first_c_inmap(tnew, &i2, &j2, '#');
-	if (tindex[0][0] == '.' && j2 > 0)
-		j2--;
-	while (tindex[i])
+	ft_init_partcmp(&i, &j, &i2, &j2);
+	ft_first_c_inmap(new->piece, &i2, &j2, '#');
+	while (index->piece[i] && new->piece[i2 + i])
 	{
-		while (tindex[i][j] == tnew[i2+i][j2+j])
+		while (index->piece[i][j] == new->piece[i2 + i][j2 + j])
 		{
-			if (tindex[i][j] == '#' && tnew[i2+i][j2+j] == '#')
+			if (index->piece[i][j] == '#' && new->piece[i2 + i][j2 + j] == '#')
 				count++;
-			if (tnew[i2+i][j2+j] == '\n')
-				break;
+			if (new->piece[i2 + i][j2 + j] == '\n')
+				break ;
 			j++;
 		}
-		if (i2 + i >= 3)
-			break;
 		i++;
 		j = 0;
 	}
 	if (count == 4)
 		return (index);
-	else
-		return (NULL);
+	return (NULL);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -6,7 +6,7 @@
 /*   By: banthony <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 16:37:08 by banthony          #+#    #+#             */
-/*   Updated: 2016/01/04 15:43:46 by pconin           ###   ########.fr       */
+/*   Updated: 2016/01/10 17:02:55 by banthony         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	ft_replace_sharp(char **piece, size_t rank)
 {
-	size_t i;
-	size_t j;
-	int c;
+	size_t	i;
+	size_t	j;
+	int		c;
 
 	i = 0;
 	j = 0;
@@ -34,5 +34,4 @@ void	ft_replace_sharp(char **piece, size_t rank)
 		}
 		i++;
 	}
-
 }

@@ -6,15 +6,15 @@
 /*   By: banthony <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/21 18:08:55 by banthony          #+#    #+#             */
-/*   Updated: 2016/01/04 15:45:55 by pconin           ###   ########.fr       */
+/*   Updated: 2016/01/11 15:40:30 by banthony         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_fillit.h"
 
-void	ft_push_elmt_back(p_list **begin_list, p_list *new)
+void	ft_push_elmt_back(t_list **begin_list, t_list *new)
 {
-	p_list *memory;
+	t_list *memory;
 
 	memory = (*begin_list);
 	while ((*begin_list)->next != NULL)
@@ -22,13 +22,3 @@ void	ft_push_elmt_back(p_list **begin_list, p_list *new)
 	(*begin_list)->next = new;
 	*begin_list = memory;
 }
-
-
-
-
-
-
-
-
-
-

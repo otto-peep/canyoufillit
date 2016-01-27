@@ -6,17 +6,15 @@
 /*   By: banthony <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 18:46:40 by banthony          #+#    #+#             */
-/*   Updated: 2016/01/04 15:47:28 by pconin           ###   ########.fr       */
+/*   Updated: 2016/01/24 18:31:51 by banthony         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_fillit.h"
-#include <stdlib.h>
-#include "libft.h"
 
-int		ft_inter(p_list **sort, p_list *new, p_list *index, int rank)
+int		ft_inter(t_list **sort, t_list *new, t_list *index, int rank)
 {
-	p_list *tmp;
+	t_list *tmp;
 
 	tmp = NULL;
 	if (*sort == NULL)
@@ -36,12 +34,12 @@ int		ft_inter(p_list **sort, p_list *new, p_list *index, int rank)
 	return (2);
 }
 
-p_list	*ft_identify(p_list **new, p_list **index, p_list *sort)
+t_list	*ft_identify(t_list **new, t_list **index, t_list *sort)
 {
-	p_list *memnew;
-	p_list *memindex;
-	int nb;
-	int rank;
+	t_list	*memnew;
+	t_list	*memindex;
+	int		nb;
+	int		rank;
 
 	rank = 0;
 	nb = 0;
@@ -51,9 +49,8 @@ p_list	*ft_identify(p_list **new, p_list **index, p_list *sort)
 	{
 		while (*index)
 		{
-			nb = ft_inter(&sort, *new, *index, rank);
-			if (nb)
-				break;
+			if (ft_inter(&sort, *new, *index, rank))
+				break ;
 			*index = (*index)->next;
 		}
 		*new = (*new)->next;
@@ -65,12 +62,3 @@ p_list	*ft_identify(p_list **new, p_list **index, p_list *sort)
 		ft_error();
 	return (sort);
 }
-
-
-
-
-
-
-
-
-

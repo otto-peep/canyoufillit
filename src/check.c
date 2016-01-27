@@ -6,29 +6,45 @@
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 18:54:46 by pconin            #+#    #+#             */
-/*   Updated: 2016/01/04 18:32:19 by banthony         ###   ########.fr       */
+/*   Updated: 2016/01/27 15:12:06 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_fillit.h"
-#include "libft.h"
 
-int		check_line(char *buf, int ind)
+int		check_block(char *buf, int index)
 {
-	int a;
-	int index;
+	int count;
+	int hash;
 
-	index = ind;
-	a = 4;
-	while (a > 0 && buf[index] != '\n')
+	hash = 0;
+	count = 21;
+	while (count > 0)
 	{
+		if (buf[index] == '#')
+			hash++;
 		index++;
-		a--;
+		count--;
 	}
-	if (a != 0)
+	if (hash != 4)
 		return (0);
 	else
 		return (1);
+}
+
+int		check_line(char *buf, int index)
+{
+	int a;
+
+	a = 0;
+	while (buf[index] != '\n' && buf[index])
+	{
+		index++;
+		a++;
+	}
+	if (a != 4)
+		return (0);
+	return (1);
 }
 
 int		check_char(char *buf)
@@ -51,16 +67,21 @@ int		check_map(char *buf)
 	int	a;
 	int count;
 
+	count = 0;
 	index = 0;
 	while (buf[index])
 	{
-		a = 4;
-		while (a > 0 && check_line(buf, index) == 1)
+		a = 0;
+		if (check_block(buf, index) == 0)
+			return (0);
+		while (a < 4)
 		{
-			a--;
+			if (!(check_line(buf, index)))
+				return (0);
+			a++;
 			index = index + 5;
 		}
-		if (buf[index] != '\n' || count > 26)
+		if ((buf[index] == '\n' && buf[index + 1] == '\0') || count > 26)
 			return (0);
 		else
 			index = index + 1;

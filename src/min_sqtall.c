@@ -6,23 +6,17 @@
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/24 21:01:05 by pconin            #+#    #+#             */
-/*   Updated: 2016/01/04 15:20:26 by pconin           ###   ########.fr       */
+/*   Updated: 2016/01/12 15:49:06 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "lib_fillit.h"
 
-int		ft_min_sqtall(p_list *tetri)
+int		ft_min_sqtall(t_list *tetri)
 {
 	int count;
 
-	count = 0;
-	while (tetri != NULL)
-	{
-		tetri = tetri->next;
-		count++;
-	}
+	count = ft_lstlen(tetri);
 	if (count == 1)
 		return (2);
 	if (count == 2)

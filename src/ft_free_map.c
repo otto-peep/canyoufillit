@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_free_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: banthony <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/23 18:44:30 by pconin            #+#    #+#             */
-/*   Updated: 2015/12/23 18:52:17 by pconin           ###   ########.fr       */
+/*   Created: 2016/01/05 15:19:21 by banthony          #+#    #+#             */
+/*   Updated: 2016/01/24 18:30:58 by banthony         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headerfillit.h"
+#include <stdlib.h>
 
-void	error(int a)
+void	ft_free_map(char **map)
 {
-	printf("%s%i\n", "error", a);
-	exit(0);
+	int i;
+
+	i = 0;
+	while (i < 21)
+	{
+		free(map[i]);
+		map[i] = NULL;
+		i++;
+	}
+	free(map);
+	map = NULL;
 }

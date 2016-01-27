@@ -6,15 +6,15 @@
 /*   By: banthony <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/14 19:35:34 by banthony          #+#    #+#             */
-/*   Updated: 2015/12/15 16:25:49 by banthony         ###   ########.fr       */
+/*   Updated: 2016/01/12 17:38:11 by banthony         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "libft.h"
+#include "lib_fillit.h"
 
 void	ft_error(void)
 {
-	ft_putstr("error");
+	ft_putstr("error\n");
 	exit(0);
 }

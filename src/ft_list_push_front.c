@@ -6,15 +6,15 @@
 /*   By: banthony <banthony@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/19 23:45:43 by banthony          #+#    #+#             */
-/*   Updated: 2016/01/04 14:12:05 by pconin           ###   ########.fr       */
+/*   Updated: 2016/01/11 15:42:03 by banthony         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_fillit.h"
 
-void	ft_list_push_front(p_list **begin_list, char const *str)
+void	ft_list_push_front(t_list **begin_list, char const *str)
 {
-	p_list *new;
+	t_list *new;
 
 	new = ft_create_elmt(str, -62);
 	new->next = *begin_list;

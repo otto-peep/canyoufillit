@@ -6,22 +6,21 @@
 /*   By: banthony <banthony@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/30 23:31:51 by banthony          #+#    #+#             */
-/*   Updated: 2016/01/04 16:09:39 by banthony         ###   ########.fr       */
+/*   Updated: 2016/01/24 18:30:07 by banthony         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib_fillit.h"
-#include "libft.h"
 #include <stdlib.h>
 
-p_list	*ft_elmtcpy(p_list *list)
+t_list	*ft_elmtcpy(t_list *list)
 {
-	p_list *new;
+	t_list *new;
 
 	new = NULL;
 	if (list == NULL)
 		return (NULL);
-	if (!(new = (p_list *)malloc(sizeof(p_list))))
+	if (!(new = (t_list *)malloc(sizeof(t_list))))
 		return (NULL);
 	new->piece = ft_mapcpy(list->piece);
 	new->x = 0;

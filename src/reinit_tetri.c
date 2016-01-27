@@ -6,19 +6,17 @@
 /*   By: pconin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/05 11:44:19 by pconin            #+#    #+#             */
-/*   Updated: 2016/01/05 18:23:32 by pconin           ###   ########.fr       */
+/*   Updated: 2016/01/12 17:05:16 by pconin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "lib_fillit.h"
 
-p_list	*reinit_tetri(p_list *tetri)
+t_list	*reinit_tetri(t_list *tetri)
 {
-	p_list	*memory;
+	t_list	*memory;
 
 	memory = tetri;
-	tetri = tetri->next;
 	while (tetri)
 	{
 		tetri->x = 0;
@@ -28,4 +26,8 @@ p_list	*reinit_tetri(p_list *tetri)
 	return (memory);
 }
 
-
+void	tetrizero(t_list *memory)
+{
+	memory->x = 0;
+	memory->y = 0;
+}
