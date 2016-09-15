@@ -6,11 +6,11 @@
 #    By: banthony <banthony@students.42.fr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/23 16:22:07 by banthony          #+#    #+#              #
-#    Updated: 2016/01/12 18:11:45 by banthony         ###   ########.fr        #
+#    Updated: 2016/09/15 15:30:23 by pconin           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
-NAME = fillit
+EXE = fillit
 
 PATH1 =./src/
 
@@ -32,13 +32,11 @@ SRC = $(FILE:%c=$(PATH1)%c)
 
 FLAGS = -Wall -Wextra -Werror
 
-all: $(NAME)
-
-$(NAME):
-	gcc $(FLAGS) -o $(NAME) $(SRC) $(HEAD)
+all: 
+	gcc $(FLAGS) -o $(EXE) $(SRC) $(HEAD)
 
 clean:
-	rm -f $(NAME)
+	rm -f $(EXE)
 
 fclean: clean
 
