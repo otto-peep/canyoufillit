@@ -10,3 +10,6 @@ Non-graphic tetris resolver, which take differents pieces of tetris in parameter
 #Usage
 `./fillit pieces.fillit`
 Some test files are contained in `pieces` directory.
+
+# Rate
+100/100
